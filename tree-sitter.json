@@ -5,8 +5,9 @@
       "camelcase": "GDSL",
       "scope": "source.gdsl",
       "path": ".",
-      "file-types": null,
-      "injection-regex": "^gdsl$"
+      "file-types": ["gdsl"],
+      "injection-regex": "^gdsl$",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
