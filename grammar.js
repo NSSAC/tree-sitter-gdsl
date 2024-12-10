@@ -24,7 +24,112 @@ module.exports = grammar({
   word: $ => $.identifier,
 
   rules: {
-    source_file: $ => repeat1($.test_expression),
+    source_file: $ => repeat1(choice(
+      $.test_statement,
+      $.test_expression,
+    )),
+
+    test_statement: $ => seq(
+      '__test', 'statement', ':',
+      repeat1($._statement),
+      'end'
+    ),
+
+    _statement: $ => choice(
+      $.variable,
+      $.pass_statement,
+      $.return_statement,
+      $.if_statement,
+      $.switch_statement,
+      $.call_statement,
+      $.update_statement,
+    ),
+
+    variable: $ => seq(
+      'var',
+      field('name', $.identifier),
+      optional(seq(
+        ':',
+        field('type', $.reference),
+      )),
+      '=',
+      field('init', $._expression),
+      $._terminator,
+    ),
+
+    pass_statement: $ => seq(
+      'pass',
+      $._terminator
+    ),
+
+    return_statement: $ => seq(
+      'return',
+      $._expression,
+      $._terminator
+    ),
+
+
+    if_statement: $ => seq(
+      'if',
+      field('condition', $._expression),
+      ':',
+      field('body', repeat1($._statement)),
+      field('elif', repeat($.elif_section)),
+      field('else', optional($.else_section)),
+      'end'
+    ),
+
+    elif_section: $ => seq(
+      'elif',
+      field('condition', $._expression),
+      ':',
+      field('body', repeat1($._statement))
+    ),
+
+    else_section: $ => seq(
+      'else', ':',
+      field('body', repeat1($._statement))
+    ),
+
+    switch_statement: $ => seq(
+      'switch',
+      field('condition', $._expression),
+      ':',
+      field('case', repeat1($.case_section)),
+      field('default', optional($.default_section)),
+      'end'
+    ),
+
+    case_section: $ => seq(
+      'case',
+      field('match', $._expression),
+      ':',
+      field('body', repeat1($._statement))
+    ),
+
+    default_section: $ => seq(
+      'default', ':',
+      field('body', repeat1($._statement))
+    ),
+
+    call_statement: $ => seq(
+      $.function_call,
+      $._terminator
+    ),
+
+    update_statement: $ => seq(
+      field('left', $.reference),
+      field('operator', choice(
+        '=',
+        '*=',
+        '/=',
+        '%=',
+        '+=',
+        '-=',
+      )),
+      field('right', $._expression),
+      $._terminator,
+    ),
 
     test_expression: $ => seq(
       '__test', 'expression', ':',
@@ -130,6 +235,8 @@ module.exports = grammar({
     comment: _ => token(seq('#', /.*/)),
 
     _whitespace: _ => /\s/,
+
+    _terminator: _ => choice('\n', ';'),
   },
 
   extras: $ => [

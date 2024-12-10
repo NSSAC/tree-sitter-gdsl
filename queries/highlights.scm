@@ -26,6 +26,12 @@
  ">="
  "<="
  "<"
+ "="
+ "*="
+ "/="
+ "%="
+ "+="
+ "-="
 ] @operator
 
 [
@@ -34,11 +40,19 @@
 
 [
  ","
+ ":"
  "."
 ] @punctuation.special
 
 [
  "__test"
- "expression"
+ "expression" "statement"
  "end"
+ "var"
+ "pass"
+ "return"
+ "if" "elif" "else"
+ "switch" "case" "default"
 ] @keyword
+
+(comment) @comment
