@@ -25,10 +25,31 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat1(choice(
+      $.enum,
+      $.global,
       $.function,
       $.test_statement,
       $.test_expression,
     )),
+
+    enum: $ => seq(
+      'enum',
+      field('name', $.identifier),
+      field('const', commaSep1($.identifier)),
+      'end'
+    ),
+
+    global: $ => seq(
+      field('category', choice('global', 'config')),
+      field('name', $.identifier),
+      optional(seq(
+        ':',
+        field('type', $.reference),
+      )),
+      '=',
+      field('init', $._expression),
+      $._terminator,
+    ),
 
     function: $ => seq(
       'def',

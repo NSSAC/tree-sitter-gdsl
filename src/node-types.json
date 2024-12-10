@@ -412,6 +412,36 @@
     }
   },
   {
+    "type": "enum",
+    "named": true,
+    "fields": {
+      "const": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function",
     "named": true,
     "fields": {
@@ -597,6 +627,88 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "global",
+    "named": true,
+    "fields": {
+      "category": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "config",
+            "named": false
+          },
+          {
+            "type": "global",
+            "named": false
+          }
+        ]
+      },
+      "init": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "reference",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "reference",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -826,7 +938,15 @@
       "required": true,
       "types": [
         {
+          "type": "enum",
+          "named": true
+        },
+        {
           "type": "function",
+          "named": true
+        },
+        {
+          "type": "global",
           "named": true
         },
         {
@@ -1342,6 +1462,10 @@
     "named": true
   },
   {
+    "type": "config",
+    "named": false
+  },
+  {
     "type": "def",
     "named": false
   },
@@ -1362,12 +1486,20 @@
     "named": false
   },
   {
+    "type": "enum",
+    "named": false
+  },
+  {
     "type": "expression",
     "named": false
   },
   {
     "type": "float",
     "named": true
+  },
+  {
+    "type": "global",
+    "named": false
   },
   {
     "type": "identifier",
