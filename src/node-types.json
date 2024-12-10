@@ -290,6 +290,68 @@
     }
   },
   {
+    "type": "edge",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "edge_field",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "edge_field",
+    "named": true,
+    "fields": {
+      "annotation": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "edge_annotation",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "reference",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "elif_section",
     "named": true,
     "fields": {
@@ -814,6 +876,58 @@
     }
   },
   {
+    "type": "node",
+    "named": true,
+    "fields": {
+      "field": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "node_field",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "node_field",
+    "named": true,
+    "fields": {
+      "annotation": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "node_annotation",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "reference",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "parenthesized_expression",
     "named": true,
     "fields": {
@@ -938,6 +1052,10 @@
       "required": true,
       "types": [
         {
+          "type": "edge",
+          "named": true
+        },
+        {
           "type": "enum",
           "named": true
         },
@@ -947,6 +1065,10 @@
         },
         {
           "type": "global",
+          "named": true
+        },
+        {
+          "type": "node",
           "named": true
         },
         {
@@ -1474,6 +1596,14 @@
     "named": false
   },
   {
+    "type": "edge",
+    "named": false
+  },
+  {
+    "type": "edge_annotation",
+    "named": true
+  },
+  {
     "type": "elif",
     "named": false
   },
@@ -1511,6 +1641,14 @@
   },
   {
     "type": "integer",
+    "named": true
+  },
+  {
+    "type": "node",
+    "named": false
+  },
+  {
+    "type": "node_annotation",
     "named": true
   },
   {

@@ -25,11 +25,53 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat1(choice(
+      $.node,
+      $.edge,
       $.enum,
       $.global,
       $.function,
       $.test_statement,
       $.test_expression,
+    )),
+
+    node: $ => seq(
+      'node',
+      field('field', repeat1($.node_field)),
+      'end'
+    ),
+
+    node_field: $ => seq(
+      field('name', $.identifier),
+      ':',
+      field('type', $.reference),
+      field('annotation', repeat($.node_annotation)),
+      $._terminator
+    ),
+
+    node_annotation: _ => token(choice(
+      alias(/node\s+key/, 'node key'),
+      'static',
+    )),
+
+    edge: $ => seq(
+      'edge',
+      field('name', $.identifier),
+      field('field', repeat1($.edge_field)),
+      'end'
+    ),
+
+    edge_field: $ => seq(
+      field('name', $.identifier),
+      ':',
+      field('type', $.reference),
+      field('annotation', repeat($.edge_annotation)),
+      $._terminator
+    ),
+
+    edge_annotation: _ => token(choice(
+      alias(/target\s+node\s+key/, 'target node key'),
+      alias(/source\s+node\s+key/, 'source node key'),
+      'static',
     )),
 
     enum: $ => seq(

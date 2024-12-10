@@ -1,3 +1,17 @@
+(node_field type: (reference (identifier)) @type)
+(node_annotation) @annotation
+
+(edge name: (identifier) @type)
+(edge_field type: (reference (identifier)) @type)
+(edge_annotation) @annotation
+
+(enum name: (identifier) @type)
+(enum const: (identifier) @constant
+      ("," const: (identifier) @constant)*
+)
+
+(global type: (reference (identifier)) @type)
+
 (function name: (identifier) @function)
 (function type: (reference (identifier)) @type)
 (function_param type: (reference (identifier)) @type)
@@ -52,6 +66,7 @@
 
 [
  "end"
+ "node" "edge"
  "__test" "expression" "statement"
  "def"
  "var"
