@@ -25,9 +25,32 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat1(choice(
+      $.function,
       $.test_statement,
       $.test_expression,
     )),
+
+    function: $ => seq(
+      'def',
+      field('name', $.identifier),
+      field('params', $.function_params),
+      optional(seq('->', field('type', $.reference))),
+      ':',
+      field('body', $.function_body),
+      'end'
+    ),
+
+    function_params: $ => seq(
+      '(', commaSep($.function_param), ')'
+    ),
+
+    function_param: $ => seq(
+      field('name', $.identifier),
+      ':',
+      field('type', $.reference),
+    ),
+
+    function_body: $ => repeat1($._statement),
 
     test_statement: $ => seq(
       '__test', 'statement', ':',

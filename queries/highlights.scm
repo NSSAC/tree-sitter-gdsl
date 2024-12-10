@@ -1,3 +1,9 @@
+(function name: (identifier) @function)
+(function type: (reference (identifier)) @type)
+(function_param type: (reference (identifier)) @type)
+
+(variable type: (reference (identifier)) @type)
+
 (function_call function: (reference (identifier) @function.builtin .))
 
 [
@@ -45,9 +51,9 @@
 ] @punctuation.special
 
 [
- "__test"
- "expression" "statement"
  "end"
+ "__test" "expression" "statement"
+ "def"
  "var"
  "pass"
  "return"
