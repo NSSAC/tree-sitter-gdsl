@@ -1,4 +1,5 @@
-; Literals
+(function_call function: (reference (identifier) @function.builtin .))
+
 [
   (boolean)
 ] @constant.builtin
@@ -10,7 +11,32 @@
 
 (string) @string
 
-; Keywords
+[
+ "+"
+ "-"
+ "*"
+ "/"
+ "%"
+ "or"
+ "and"
+ "not"
+ "=="
+ "!="
+ ">"
+ ">="
+ "<="
+ "<"
+] @operator
+
+[
+ "(" ")"
+] @punctuation.bracket
+
+[
+ ","
+ "."
+] @punctuation.special
+
 [
  "__test"
  "expression"
