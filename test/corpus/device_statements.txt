@@ -18,8 +18,10 @@ end
         (select_statement
             set: (reference (identifier))
             function: (inline_expression_function
-                name: (identifier)
-                type: (reference (identifier))
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
                 rtype: (reference (identifier))
                 expression: (reference (identifier) (identifier))
             )
@@ -78,8 +80,10 @@ end
         (apply_statement
             set: (reference (identifier))
             function: (inline_update_function
-                name: (identifier)
-                type: (reference (identifier))
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
                 stmt: (update_statement
                     left: (reference (identifier) (identifier) (identifier))
                     right: (reference (identifier))
@@ -90,9 +94,9 @@ end
 )
 
 
-=========
-Foreach 2
-=========
+=======
+Apply 2
+=======
 
 __test statement:
     apply(vset1, [v: node]{
@@ -101,6 +105,8 @@ __test statement:
     })
 
     apply(vset1, [v: node]{ v.c1.state = E ; v.c2.state = E1 ; })
+
+    apply(vset1, [v: node, e: edge]{ v.c1.state = E ; v.c2.state = E1 ; })
 end
 
 ---
@@ -110,8 +116,10 @@ end
         (apply_statement
             set: (reference (identifier))
             function: (inline_update_function
-                name: (identifier)
-                type: (reference (identifier))
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
                 stmt: (update_statement
                     left: (reference (identifier) (identifier) (identifier))
                     right: (reference (identifier))
@@ -125,8 +133,31 @@ end
         (apply_statement
             set: (reference (identifier))
             function: (inline_update_function
-                name: (identifier)
-                type: (reference (identifier))
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
+                stmt: (update_statement
+                    left: (reference (identifier) (identifier) (identifier))
+                    right: (reference (identifier))
+                )
+                stmt: (update_statement
+                    left: (reference (identifier) (identifier) (identifier))
+                    right: (reference (identifier))
+                )
+            )
+        )
+        (apply_statement
+            set: (reference (identifier))
+            function: (inline_update_function
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
                 stmt: (update_statement
                     left: (reference (identifier) (identifier) (identifier))
                     right: (reference (identifier))
@@ -139,7 +170,6 @@ end
         )
     )
 )
-
 
 ========
 Reduce 1
@@ -163,8 +193,10 @@ end
             outvar: (reference (identifier))
             set: (reference (identifier))
             function: (inline_expression_function
-                name: (identifier)
-                type: (reference (identifier))
+                param: (function_param
+                    name: (identifier)
+                    type: (reference (identifier))
+                )
                 rtype: (reference (identifier))
                 expression: (reference (identifier) (identifier))
             )
