@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "gdsl",
+      "camelcase": "Gdsl",
+      "scope": "source.gdsl",
+      "file-types": [
+        ".gdsl"
+      ],
+      "injection-regex": "^gdsl$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Graph Dynamical Systems Language",
+    "authors": [
+      {
+        "name": "Parantapa Bhattacharya",
+        "email": "parantapa@virginia.edu",
+        "url": "https://parantapa.net/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/nssac/tree-sitter-gdsl"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
