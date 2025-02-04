@@ -238,6 +238,10 @@
             "named": true
           },
           {
+            "type": "save_statement",
+            "named": true
+          },
+          {
             "type": "select_statement",
             "named": true
           },
@@ -341,6 +345,10 @@
           },
           {
             "type": "sample_statement",
+            "named": true
+          },
+          {
+            "type": "save_statement",
             "named": true
           },
           {
@@ -587,6 +595,10 @@
             "named": true
           },
           {
+            "type": "save_statement",
+            "named": true
+          },
+          {
             "type": "select_statement",
             "named": true
           },
@@ -690,6 +702,10 @@
           },
           {
             "type": "sample_statement",
+            "named": true
+          },
+          {
+            "type": "save_statement",
             "named": true
           },
           {
@@ -830,6 +846,10 @@
         },
         {
           "type": "sample_statement",
+          "named": true
+        },
+        {
+          "type": "save_statement",
           "named": true
         },
         {
@@ -1054,6 +1074,10 @@
           },
           {
             "type": "sample_statement",
+            "named": true
+          },
+          {
+            "type": "save_statement",
             "named": true
           },
           {
@@ -1838,6 +1862,22 @@
     }
   },
   {
+    "type": "save_statement",
+    "named": true,
+    "fields": {
+      "what": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "reference",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "select_statement",
     "named": true,
     "fields": {
@@ -2073,6 +2113,10 @@
         },
         {
           "type": "sample_statement",
+          "named": true
+        },
+        {
+          "type": "save_statement",
           "named": true
         },
         {
@@ -2461,6 +2505,10 @@
             "named": true
           },
           {
+            "type": "save_statement",
+            "named": true
+          },
+          {
             "type": "select_statement",
             "named": true
           },
@@ -2812,6 +2860,10 @@
   },
   {
     "type": "sample",
+    "named": false
+  },
+  {
+    "type": "save",
     "named": false
   },
   {

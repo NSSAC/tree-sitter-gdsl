@@ -18,6 +18,28 @@ end
     )
 )
 
+================
+Save statement 1
+================
+
+__test statement:
+    save(node.col1)
+    save(edge.col1)
+end
+
+---
+
+(source_file
+    (test_statement
+        (save_statement
+            what: (reference (identifier) (identifier))
+        )
+        (save_statement
+            what: (reference (identifier) (identifier))
+        )
+    )
+)
+
 
 ==============
 If Statement 1

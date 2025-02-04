@@ -198,10 +198,11 @@ module.exports = grammar({
       $.call_statement,
       $.update_statement,
       $.print_statement,
+      $.save_statement,
       $.select_statement,
       $.sample_statement,
       $.apply_statement,
-      $.reduce_statement
+      $.reduce_statement,
     ),
 
     variable: $ => seq(
@@ -364,6 +365,13 @@ module.exports = grammar({
     print_statement: $ => seq(
       'print', '(',
       field('arg', commaSep1(choice($.string, $._expression))),
+      ')',
+      $._terminator
+    ),
+
+    save_statement: $ => seq(
+      'save', '(',
+      field('what', $.reference),
       ')',
       $._terminator
     ),
